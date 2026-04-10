@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block head_title %}SAML IdP{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+    <!-- Dark mode FOUC prevention -->
+    <script>
+        document.documentElement.setAttribute(
+            "data-theme",
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                ? "dark" : "light"
+        );
+    </script>
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+<body class="min-h-screen theme-bg-gradient flex items-center justify-center p-5 m-0 font-['Inter','Segoe_UI',sans-serif] transition-colors duration-300">
+    <div class="theme-card rounded-xl p-8 w-full max-w-[400px] text-center relative transition-colors duration-300">
+        <!-- Theme Toggle -->
+        <div class="absolute top-4 right-4">
+            <button onclick="toggleTheme()" class="theme-toggle-btn p-2 rounded-lg border-none cursor-pointer text-sm transition-colors" aria-label="Toggle theme">
+                <span class="theme-icon-light">🌙</span>
+                <span class="theme-icon-dark" style="display:none">☀️</span>
+            </button>
+        </div>
+        {% block content %}{% endblock content %}
+    </div>
+    <!-- Theme toggle script -->
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute("data-theme") === "dark";
+            html.setAttribute("data-theme", isDark ? "light" : "dark");
+            localStorage.theme = isDark ? "light" : "dark";
+            document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = isDark ? '' : 'none');
+            document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = isDark ? 'none' : '');
+        }
+        // Set initial icon state
+        document.addEventListener("DOMContentLoaded", () => {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = isDark ? 'none' : '');
+            document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = isDark ? '' : 'none');
+        });
+    </script>
+</body>
+</html>

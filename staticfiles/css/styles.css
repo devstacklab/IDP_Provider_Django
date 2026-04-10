@@ -1,0 +1,227 @@
+/* ==========================================
+   SAML IdP - Global Styles
+   ========================================== */
+
+/* Page background */
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #6a5acd, #7b68ee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Card container */
+.container {
+    background: #ffffff;
+    padding: 32px 28px;
+    border-radius: 12px;
+    width: 360px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Title */
+.container h1 {
+    margin-bottom: 10px;
+    font-size: 26px;
+    color: #333;
+}
+
+/* Subtitle */
+.container p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.container a {
+    color: #6a5acd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+/* Form layout */
+form p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+/* Labels */
+label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #6a5acd;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.15);
+}
+
+/* Remember checkbox */
+#id_remember {
+    margin-right: 6px;
+}
+
+form p:has(#id_remember) {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Forgot password */
+.helptext {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.helptext a {
+    color: #6a5acd;
+}
+
+/* Button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #6a5acd;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+button[type="submit"]:hover {
+    background: #5a4bd1;
+}
+
+/* Divider */
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+/* Google Sign-In Button */
+.google-signin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.google-signin-btn:hover {
+    background: #f1f1f1;
+    border-color: #ccc;
+}
+
+/* Google icon inside button */
+.google-signin-btn .google-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.google-signin-btn span {
+    flex: 1;
+    text-align: center;
+}
+
+/* Provider list container */
+.provider-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Error messages */
+.errorlist {
+    list-style: none;
+    color: #d32f2f;
+    font-size: 12px;
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.errorlist li {
+    margin-bottom: 2px;
+}
+
+/* Success/info alerts */
+.alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.alert-success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.alert-error,
+.alert-danger {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+.alert-info {
+    background: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        margin: 16px;
+        padding: 24px 20px;
+    }
+
+    .container h1 {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,14 @@
+{% load allauth %}
+<section class="mb-5">
+    {% if attrs.heading %}
+    <h2 class="text-lg font-medium text-gray-700 mb-3">{% slot name %}{{ attrs.heading }}{% endslot %}</h2>
+    {% endif %}
+    <div class="p-4 rounded-md bg-gray-50 border border-gray-200">
+        {% slot body %}{% endslot %}
+        {% if attrs.actions %}
+        <div class="mt-3 pt-3 border-t border-gray-200">
+            {% slot actions %}{% endslot %}
+        </div>
+        {% endif %}
+    </div>
+</section>

@@ -1,0 +1,4 @@
+{% load allauth %}
+<button type="{{ attrs.type|default:'submit' }}" class="w-full py-2.5 border-none text-white font-semibold rounded-md cursor-pointer transition-all duration-200 text-sm theme-brand {{ attrs.class|default:'' }}">
+    {% slot %}{% endslot %}
+</button>

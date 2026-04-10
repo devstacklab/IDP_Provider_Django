@@ -1,0 +1,145 @@
+{% extends "allauth/layouts/base.html" %}
+{% load static %}
+
+{% block head_title %}SAML IdP Provider{% endblock %}
+
+{% block content %}
+<!-- Logo / Icon -->
+<div class="mb-6">
+    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl theme-brand shadow-lg">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+    </div>
+</div>
+
+<h1 class="mb-1 text-2xl font-bold theme-text-primary text-center">SAML Identity Provider</h1>
+<p class="text-sm theme-text-secondary mb-6 text-center">Secure Single Sign-On Authentication</p>
+
+{% if user.is_authenticated %}
+<!-- Authenticated State -->
+<div class="flex items-center gap-3 p-3 mb-6 rounded-lg theme-panel border">
+    <div class="flex-shrink-0 w-10 h-10 rounded-full theme-brand flex items-center justify-center">
+        <span class="text-white text-sm font-semibold">{{ user.email|first|upper }}</span>
+    </div>
+    <div class="text-left min-w-0">
+        <p class="text-sm font-medium theme-text-primary truncate">{{ user.email }}</p>
+        <p class="text-xs theme-text-muted">@{{ user.username }}</p>
+    </div>
+    <div class="flex-shrink-0 ml-auto">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+            Active
+        </span>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<div class="grid grid-cols-3 gap-3 mb-6">
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <p class="text-lg font-bold theme-text-primary">✓</p>
+        <p class="text-xs theme-text-muted">SAML 2.0</p>
+    </div>
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <p class="text-lg font-bold theme-text-primary">✓</p>
+        <p class="text-xs theme-text-muted">OAuth 2.0</p>
+    </div>
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <p class="text-lg font-bold theme-text-primary">✓</p>
+        <p class="text-xs theme-text-muted">Google SSO</p>
+    </div>
+</div>
+
+<!-- Endpoints -->
+<div class="text-left mb-6">
+    <h2 class="text-xs font-semibold theme-text-muted uppercase tracking-wider mb-3">Endpoints</h2>
+    <div class="space-y-2">
+        <div class="flex items-center gap-2 p-2.5 rounded-md theme-panel border group">
+            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500"></span>
+            <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium theme-text-primary truncate">SSO (POST)</p>
+                <p class="text-[11px] theme-text-muted truncate">/saml2/idp/sso/post</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 p-2.5 rounded-md theme-panel border group">
+            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-purple-500"></span>
+            <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium theme-text-primary truncate">SSO (Redirect)</p>
+                <p class="text-[11px] theme-text-muted truncate">/saml2/idp/sso/redirect</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 p-2.5 rounded-md theme-panel border group">
+            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-orange-500"></span>
+            <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium theme-text-primary truncate">Metadata</p>
+                <p class="text-[11px] theme-text-muted truncate">/saml2idp/metadata/</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actions -->
+<div class="flex gap-2.5">
+    <a href="/admin/" class="flex-1 text-center py-2.5 text-white no-underline rounded-md text-sm font-medium transition-colors duration-200 theme-brand">
+        Admin Panel
+    </a>
+    <a href="{% url 'account_logout' %}" class="flex-1 text-center py-2.5 text-white no-underline rounded-md text-sm font-medium transition-colors duration-200 bg-gray-500 hover:bg-gray-600">
+        Logout
+    </a>
+</div>
+
+{% else %}
+<!-- Guest State -->
+<div class="mb-6 text-left">
+    <div class="p-4 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+        <h3 class="font-semibold mb-1.5">🔐 SAML 2.0 IdP</h3>
+        <p class="text-sm text-white/90 leading-relaxed">Authenticate users via SAML, OAuth, or Google SSO. Provide identity assertions to your Service Providers.</p>
+    </div>
+</div>
+
+<!-- Features -->
+<div class="grid grid-cols-2 gap-3 mb-6">
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <div class="text-xl mb-1">🔐</div>
+        <p class="text-xs font-medium theme-text-primary">SAML 2.0</p>
+        <p class="text-[11px] theme-text-muted">IdP Protocol</p>
+    </div>
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <div class="text-xl mb-1">🔑</div>
+        <p class="text-xs font-medium theme-text-primary">OAuth 2.0</p>
+        <p class="text-[11px] theme-text-muted">Google SSO</p>
+    </div>
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <div class="text-xl mb-1">📧</div>
+        <p class="text-xs font-medium theme-text-primary">Email Auth</p>
+        <p class="text-[11px] theme-text-muted">Password Login</p>
+    </div>
+    <div class="text-center p-3 rounded-lg theme-panel border">
+        <div class="text-xl mb-1">🔌</div>
+        <p class="text-xs font-medium theme-text-primary">SP Ready</p>
+        <p class="text-[11px] theme-text-muted">Metadata XML</p>
+    </div>
+</div>
+
+<!-- Actions -->
+<div class="flex gap-2.5">
+    <a href="{% url 'account_login' %}" class="flex-1 text-center py-2.5 text-white no-underline rounded-md text-sm font-medium transition-colors duration-200 theme-brand">
+        Sign In
+    </a>
+    <a href="{% url 'account_signup' %}" class="flex-1 text-center py-2.5 bg-gray-500 hover:bg-gray-600 text-white no-underline rounded-md text-sm font-medium transition-colors duration-200">
+        Sign Up
+    </a>
+</div>
+
+<!-- Quick Links -->
+<div class="mt-4 pt-4 border-t theme-divider">
+    <div class="flex justify-center gap-4 text-xs">
+        <a href="/saml2idp/metadata/" class="theme-text-muted hover:text-[#6a5acd] transition-colors">Metadata</a>
+        <span class="theme-divider">|</span>
+        <a href="/admin/" class="theme-text-muted hover:text-[#6a5acd] transition-colors">Admin</a>
+        <span class="theme-divider">|</span>
+        <a href="https://github.com/OTA-Insight/djangosaml2idp" target="_blank" class="theme-text-muted hover:text-[#6a5acd] transition-colors">Docs</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+/* Theme CSS Variables */
+:root {
+    --bg-gradient-from: #6a5acd;
+    --bg-gradient-to: #7b68ee;
+    --card-bg: #ffffff;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --input-bg: #ffffff;
+    --input-border: #d1d5db;
+    --input-text: #111827;
+    --divider-border: #e5e7eb;
+    --alert-success-bg: #f0fdf4;
+    --alert-success-text: #166534;
+    --alert-success-border: #bbf7d0;
+    --alert-error-bg: #fef2f2;
+    --alert-error-text: #dc2626;
+    --alert-error-border: #fecaca;
+    --alert-info-bg: #eff6ff;
+    --alert-info-text: #1d4ed8;
+    --alert-info-border: #bfdbfe;
+    --panel-bg: #f9fafb;
+    --panel-border: #e5e7eb;
+    --code-text: #1f2937;
+    --label-text: #374151;
+    --brand-primary: #6a5acd;
+    --brand-hover: #5a4bd1;
+    --google-btn-bg: #f9fafb;
+    --google-btn-border: #d1d5db;
+    --google-btn-text: #374151;
+    --google-btn-hover-bg: #f3f4f6;
+    --google-btn-hover-border: #9ca3af;
+    --theme-toggle-bg: #f3f4f6;
+    --theme-toggle-text: #4b5563;
+    --theme-toggle-hover-bg: #e5e7eb;
+}
+
+[data-theme="dark"] {
+    --bg-gradient-from: #1a1a2e;
+    --bg-gradient-to: #16213e;
+    --card-bg: #111827;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --input-bg: #1f2937;
+    --input-border: #4b5563;
+    --input-text: #f9fafb;
+    --divider-border: #374151;
+    --alert-success-bg: #052e16;
+    --alert-success-text: #4ade80;
+    --alert-success-border: #166534;
+    --alert-error-bg: #450a0a;
+    --alert-error-text: #f87171;
+    --alert-error-border: #991b1b;
+    --alert-info-bg: #172554;
+    --alert-info-text: #60a5fa;
+    --alert-info-border: #1e40af;
+    --panel-bg: #1f2937;
+    --panel-border: #374151;
+    --code-text: #e5e7eb;
+    --label-text: #d1d5db;
+    --brand-primary: #8b7aee;
+    --brand-hover: #7b68dd;
+    --google-btn-bg: #1f2937;
+    --google-btn-border: #4b5563;
+    --google-btn-text: #e5e7eb;
+    --google-btn-hover-bg: #374151;
+    --google-btn-hover-border: #6b7280;
+    --theme-toggle-bg: #1f2937;
+    --theme-toggle-text: #d1d5db;
+    --theme-toggle-hover-bg: #374151;
+}
+
+/* Theme-aware utility classes */
+.theme-bg-gradient {
+    background: linear-gradient(to bottom right, var(--bg-gradient-from), var(--bg-gradient-to));
+}
+
+.theme-card {
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+}
+
+.theme-text-primary { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-muted { color: var(--text-muted); }
+
+.theme-input {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-text);
+}
+
+.theme-input:focus {
+    border-color: var(--brand-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand-primary) 20%, transparent);
+}
+
+.theme-divider {
+    border-color: var(--divider-border);
+}
+
+.theme-panel {
+    background-color: var(--panel-bg);
+    border-color: var(--panel-border);
+}
+
+.theme-code { color: var(--code-text); }
+.theme-label { color: var(--label-text); }
+
+.theme-brand {
+    background-color: var(--brand-primary);
+}
+.theme-brand:hover {
+    background-color: var(--brand-hover);
+}
+
+.theme-google-btn {
+    background-color: var(--google-btn-bg);
+    border-color: var(--google-btn-border);
+    color: var(--google-btn-text);
+}
+.theme-google-btn:hover {
+    background-color: var(--google-btn-hover-bg);
+    border-color: var(--google-btn-hover-border);
+}
+
+.theme-toggle-btn {
+    background-color: var(--theme-toggle-bg);
+    color: var(--theme-toggle-text);
+}
+.theme-toggle-btn:hover {
+    background-color: var(--theme-toggle-hover-bg);
+}
+
+.theme-alert-success {
+    background-color: var(--alert-success-bg);
+    color: var(--alert-success-text);
+    border-color: var(--alert-success-border);
+}
+.theme-alert-error {
+    background-color: var(--alert-error-bg);
+    color: var(--alert-error-text);
+    border-color: var(--alert-error-border);
+}
+.theme-alert-info {
+    background-color: var(--alert-info-bg);
+    color: var(--alert-info-text);
+    border-color: var(--alert-info-border);
+}
+
+.theme-link { color: var(--brand-primary); }

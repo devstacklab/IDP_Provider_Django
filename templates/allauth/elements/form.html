@@ -1,0 +1,10 @@
+{% load allauth %}
+<form method="{{ attrs.method|default:'post' }}" action="{{ attrs.action|default:'' }}">
+    {% if attrs.method != 'get' %}{% csrf_token %}{% endif %}
+    <div class="slot-body">
+        {% slot body %}{% endslot %}
+    </div>
+    <div class="slot-actions">
+        {% slot actions %}{% endslot %}
+    </div>
+</form>

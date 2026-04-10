@@ -1,0 +1,39 @@
+{% extends "allauth/layouts/entrance.html" %}
+{% load allauth i18n socialaccount %}
+
+{% block head_title %}Sign In - SAML IdP{% endblock %}
+
+{% block content %}
+{% element h1 %}
+    Sign In
+{% endelement %}
+
+{% if not SOCIALACCOUNT_ONLY %}
+    {% setvar link %}
+        <a href="{{ signup_url }}" class="theme-link font-medium hover:underline">
+        {% endsetvar %}
+        {% setvar end_link %}
+        </a>
+    {% endsetvar %}
+    {% element p %}
+        {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
+    {% endelement %}
+    <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {% element fields form=form unlabeled=True %}
+        {% endelement %}
+        {% if redirect_field_value %}
+            <input type="hidden"
+                   name="{{ redirect_field_name }}"
+                   value="{{ redirect_field_value }}" />
+        {% endif %}
+        {% element button type="submit" tags="prominent,login" %}
+            Sign In
+        {% endelement %}
+    </form>
+{% endif %}
+
+{% if SOCIALACCOUNT_ENABLED %}
+    {% include "socialaccount/snippets/login.html" %}
+{% endif %}
+{% endblock %}
